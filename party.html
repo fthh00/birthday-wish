@@ -25,23 +25,24 @@
 
         const container = document.getElementById("balloon-container");
         const timerElement = document.getElementById("timer");
+        let timeLeft = 60; // Countdown timer duration
 
         // Function to create a moving balloon
         function createBalloon() {
             const balloon = document.createElement("div");
             balloon.className = "balloon";
 
-            // Set random initial position
+            // Random initial position
             balloon.style.left = `${Math.random() * 90}%`;
             balloon.style.top = `${Math.random() * 80}%`;
 
-            // Update position every second for continuous movement
+            // Function to move the balloon
             function moveBalloon() {
                 balloon.style.left = `${Math.random() * 90}%`;
                 balloon.style.top = `${Math.random() * 80}%`;
             }
 
-            // Set interval for random movement
+            // Move balloon every 1 second
             const movementInterval = setInterval(moveBalloon, 1000);
 
             // Handle balloon pop
@@ -49,8 +50,8 @@
                 const message = messages[Math.floor(Math.random() * messages.length)];
                 alert(message);
                 balloon.style.animation = "pop 0.3s ease-out forwards"; // Pop effect
-                clearInterval(movementInterval); // Stop moving the balloon
-                setTimeout(() => balloon.remove(), 300); // Remove balloon after pop effect
+                clearInterval(movementInterval); // Stop movement
+                setTimeout(() => balloon.remove(), 300); // Remove balloon after animation
             });
 
             container.appendChild(balloon);
@@ -62,7 +63,6 @@
         }
 
         // Countdown Timer Logic
-        let timeLeft = 60; // 60 seconds countdown
         const countdown = setInterval(() => {
             timeLeft--;
             timerElement.textContent = `⏳ Time Left: ${timeLeft} seconds`;
@@ -75,12 +75,12 @@
             }
         }, 1000);
 
-        // Function to remove all balloons
+        // Remove all balloons after time runs out
         function removeAllBalloons() {
             const balloons = document.querySelectorAll(".balloon");
             balloons.forEach(balloon => {
                 balloon.style.animation = "pop 0.3s ease-out forwards";
-                setTimeout(() => balloon.remove(), 300); // Remove balloon after animation
+                setTimeout(() => balloon.remove(), 300); // Remove after animation
             });
         }
     </script>
