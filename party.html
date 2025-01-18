@@ -24,24 +24,31 @@
 
         const container = document.getElementById("balloon-container");
 
-        // Function to create a balloon
+        // Function to create a moving balloon
         function createBalloon() {
             const balloon = document.createElement("div");
             balloon.className = "balloon";
+
+            // Set random initial position
             balloon.style.left = `${Math.random() * 90}%`;
             balloon.style.top = `${Math.random() * 80}%`;
 
-            // Random movement animation
-            const randomX = Math.random() * 30 - 15; // Random X-axis movement
-            const randomY = Math.random() * 30 - 15; // Random Y-axis movement
-            balloon.style.animation = `float ${4 + Math.random() * 3}s linear infinite, move ${2 + Math.random() * 3}s linear infinite alternate`;
+            // Update position every second for continuous movement
+            function moveBalloon() {
+                balloon.style.left = `${Math.random() * 90}%`;
+                balloon.style.top = `${Math.random() * 80}%`;
+            }
 
-            // Pop the balloon
+            // Set interval for random movement
+            const movementInterval = setInterval(moveBalloon, 1000);
+
+            // Handle balloon pop
             balloon.addEventListener("click", () => {
                 const message = messages[Math.floor(Math.random() * messages.length)];
                 alert(message);
-                balloon.style.animation = "pop 0.3s ease-out forwards";
-                setTimeout(() => balloon.remove(), 300); // Remove balloon after animation
+                balloon.style.animation = "pop 0.3s ease-out forwards"; // Pop effect
+                clearInterval(movementInterval); // Stop moving the balloon
+                setTimeout(() => balloon.remove(), 300); // Remove balloon after pop effect
             });
 
             container.appendChild(balloon);
