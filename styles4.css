@@ -35,15 +35,15 @@ p {
     background-color: #ff6f91;
     border-radius: 50% 50% 50% 50%;
     cursor: pointer;
-    animation: float 5s ease-in-out infinite;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Hover effect */
 .balloon:hover {
     transform: scale(1.1);
 }
 
-/* Balloon Float Animation */
+/* Float Animation */
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -53,5 +53,27 @@ p {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+/* Random Movement */
+@keyframes move {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(var(--move-x), var(--move-y));
+    }
+}
+
+/* Pop Animation */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
     }
 }
