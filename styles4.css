@@ -27,6 +27,14 @@ p {
     margin-bottom: 20px;
 }
 
+/* Timer Styles */
+#timer {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6f91;
+    margin-bottom: 20px;
+}
+
 /* Balloon Styles */
 .balloon {
     position: absolute;
@@ -53,22 +61,5 @@ p {
     100% {
         transform: scale(1.5);
         opacity: 0;
-    }
-}
-
-.balloon {
-    animation: float 5s linear infinite;
-}
-
-/* Float Animation (Optional for aesthetic floating effect) */
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0);
     }
 }
