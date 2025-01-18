@@ -47,7 +47,7 @@ p {
     transition: all 1s ease; /* Smooth movement */
 }
 
-/* Hover effect */
+/* Hover Effect */
 .balloon:hover {
     transform: scale(1.1);
 }
