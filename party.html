@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Game</title>
+    <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+    <div class="party-container">
+        <h1>🎈 Balloon Pop Game 🎉</h1>
+        <p>Click on a balloon to reveal your surprise message!</p>
+        <div id="balloon-container"></div>
+    </div>
+
+    <script>
+        const messages = [
+            "🎉 You are amazing!",
+            "💖 Happy moments ahead!",
+            "🎁 A surprise awaits you!",
+            "🌟 Keep shining!",
+            "🎊 Cheers to a great day!"
+        ];
+
+        const container = document.getElementById("balloon-container");
+
+        // Create multiple balloons
+        for (let i = 0; i < 20; i++) {
+            const balloon = document.createElement("div");
+            balloon.className = "balloon";
+            balloon.style.left = `${Math.random() * 90}%`;
+            balloon.style.top = `${Math.random() * 80}%`;
+
+            balloon.addEventListener("click", () => {
+                const message = messages[Math.floor(Math.random() * messages.length)];
+                alert(message);
+                balloon.remove(); // Remove balloon after pop
+            });
+
+            container.appendChild(balloon);
+        }
+    </script>
+</body>
+</html>
