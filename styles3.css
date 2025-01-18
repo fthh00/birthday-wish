@@ -2,7 +2,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #ff7eb3, #ff65a3); /* Soft pink gradient background */
-    color: #fff;
+    color: black; /* Changed text color to black */
     text-align: center;
     padding: 20px;
     margin: 0;
@@ -31,6 +31,7 @@ p {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 15px;
+    color: black; /* Ensures paragraph text is black */
 }
 
 /* Button Styles */
