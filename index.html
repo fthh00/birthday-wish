@@ -22,7 +22,11 @@
     </div>
     <script>
         function showSurprise() {
-            document.getElementById("surprise").style.display = "block";
+            const surpriseElement = document.getElementById("surprise");
+            surpriseElement.style.display = "block"; // Show the surprise message
+
+            // Optional: Smoothly scroll to the surprise message
+            surpriseElement.scrollIntoView({ behavior: "smooth" });
         }
     </script>
 </body>
