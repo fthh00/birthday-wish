@@ -9,7 +9,8 @@
 <body>
     <div class="party-container">
         <h1>🎈 Balloon Pop Game 🎉</h1>
-        <p>Catch a balloon to reveal your surprise message!</p>
+        <p>Catch as many balloons as you can before the time runs out!</p>
+        <p id="timer">⏳ Time Left: 60 seconds</p>
         <div id="balloon-container"></div>
     </div>
 
@@ -23,6 +24,7 @@
         ];
 
         const container = document.getElementById("balloon-container");
+        const timerElement = document.getElementById("timer");
 
         // Function to create a moving balloon
         function createBalloon() {
@@ -57,6 +59,29 @@
         // Generate multiple balloons
         for (let i = 0; i < 20; i++) {
             createBalloon();
+        }
+
+        // Countdown Timer Logic
+        let timeLeft = 60; // 60 seconds countdown
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = `⏳ Time Left: ${timeLeft} seconds`;
+
+            // When time runs out
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerElement.textContent = "⏳ Time's up!";
+                removeAllBalloons();
+            }
+        }, 1000);
+
+        // Function to remove all balloons
+        function removeAllBalloons() {
+            const balloons = document.querySelectorAll(".balloon");
+            balloons.forEach(balloon => {
+                balloon.style.animation = "pop 0.3s ease-out forwards";
+                setTimeout(() => balloon.remove(), 300); // Remove balloon after animation
+            });
         }
     </script>
 </body>
